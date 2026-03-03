@@ -1,0 +1,18 @@
+# Đường dẫn gốc đến thư mục chứa dữ liệu
+path: ./dataset  
+
+# Đường dẫn tương đối từ 'path' đến các thư mục chứa ảnh
+train: train/data
+val: validation/data
+test: test/data # Có thể để trống nếu không dùng
+
+# Số lượng lớp (Categories) - COCO mặc định có 80 lớp
+nc: 80 
+
+# Danh sách tên các lớp (Phải đúng thứ tự ID trong file JSON)
+names:
+  0: person
+  1: bicycle
+  2: car
+  ... (tiếp tục cho đến lớp 79)
+  79: hair drier
