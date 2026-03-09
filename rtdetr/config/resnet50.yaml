@@ -1,0 +1,48 @@
+model: RTDETR
+
+backbone:
+  name: presnet
+  depth: 50
+  variant: d
+  in_channels: 3
+  return_idx: [1, 2, 3]
+
+neck:
+  name: hybrid_encoder
+  in_channels: [512, 1024, 2048]
+  hidden_dim: 256
+  num_encoder_layers: 1
+  num_heads: 8
+  ffn_dim: 1024
+  csp_blocks: 2
+
+head:
+  hidden_dim: 256
+  num_queries: 300
+  num_classes: 4
+  num_denoising: 100
+  label_noise_ratio: 0.5
+  box_noise_scale: 0.4
+
+decoder:
+  hidden_dim: 256
+  num_layers: 6
+  num_heads: 8
+  ffn_dim: 1024
+
+
+optimizer:
+  type: AdamW
+  lr: 0.0001
+  backbone_lr: 0.00001
+  weight_decay: 0.0001
+
+matcher:
+  cost_class: 2.0
+  cost_bbox: 5.0
+  cost_giou: 2.0
+
+loss:
+  vfl_alpha: 0.75
+  vfl_gamma: 2.0
+  aux_loss: true

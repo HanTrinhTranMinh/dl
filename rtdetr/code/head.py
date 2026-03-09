@@ -1,2 +1,0 @@
-# Cuối cùng là Transformer Decoder: module dự đoán các box và class từ các đặc trưng đã được hợp nhất
-#Decoder nhiều tầng dùng Multi-Scale Deformable Attention, xử lý tập query cố định để dự đoán bounding box và xác suất lớp một cách lặp lại.

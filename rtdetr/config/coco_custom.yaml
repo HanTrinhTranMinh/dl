@@ -1,18 +1,27 @@
-# Đường dẫn gốc đến thư mục chứa dữ liệu
-path: ./dataset  
+task: detection
 
-# Đường dẫn tương đối từ 'path' đến các thư mục chứa ảnh
-train: train/data
-val: validation/data
-test: test/data # Có thể để trống nếu không dùng
+num_classes: 4
 
-# Số lượng lớp (Categories) - COCO mặc định có 80 lớp
-nc: 80 
+train_dataset:
+  name: custom_dataset
+  img_folder: ./dataset/train
+  ann_file: ./dataset/train/_annotations.coco.json
+  img_size: 640
 
-# Danh sách tên các lớp (Phải đúng thứ tự ID trong file JSON)
-names:
-  0: person
-  1: bicycle
-  2: car
-  ... (tiếp tục cho đến lớp 79)
-  79: hair drier
+val_dataset:
+  name: custom_dataset
+  img_folder: ./dataset/val
+  ann_file: ./dataset/val/_annotations.coco.json
+  img_size: 640
+
+dataloader:
+  batch_size: 4
+  num_workers: 4
+  shuffle: true
+
+training:
+  epochs: 120
+  seed: 42
+  print_freq: 10
+
+device: cuda
