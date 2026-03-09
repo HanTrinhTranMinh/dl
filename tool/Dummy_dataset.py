@@ -36,3 +36,14 @@ def collate_fn(batch):
     images = torch.stack([item[0] for item in batch], dim=0)
     targets = [item[1] for item in batch]
     return images, targets
+
+if __name__ == "__main__":
+    dataset = DummyDetectionDataset(num_samples=5)
+
+    print("Dataset length:", len(dataset))
+
+    image, target = dataset[0]
+
+    print("Image shape:", image.shape)
+    print("Labels:", target["labels"])
+    print("Boxes:", target["boxes"])
